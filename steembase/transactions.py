@@ -328,7 +328,7 @@ def get_block_params(steem):
     """
     props = steem.get_dynamic_global_properties()
     ref_block_num = props["head_block_number"] - 3 & 0xFFFF
-    ref_block = ws.get_block(props["head_block_number"] - 2)
+    ref_block = steem.get_block(props["head_block_number"] - 2)
     ref_block_prefix = struct.unpack_from("<I", unhexlify(ref_block["previous"]), 4)[0]
     return ref_block_num, ref_block_prefix
 
